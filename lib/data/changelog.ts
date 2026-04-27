@@ -15,9 +15,54 @@ export const CHANGELOG: ChangelogEntry[] = [
   {
     version: "Unreleased",
     date: "",
+    highlights: [],
+  },
+  {
+    version: "0.11.7",
+    date: "2026-04-27",
     highlights: [
-      { type: "changed", text: "Marketing site polish — mobile navigation refinements, hero scroll-down cue, TrustStrip KPI layout tweaks, and changelog page polish (#51)" },
-      { type: "fixed", text: "Favicon — replaced the placeholder icon with the q-ring neon shield asset (#53)" },
+      {
+        type: "changed",
+        text: "MCP tool descriptions overhauled for Glama TDQS — every one of the 44 MCP tools now ships a 3-sentence description hitting all six Tool Definition Quality Score dimensions (purpose, when-to-use vs. siblings, side-effects/audit/network, parameter semantics, conciseness, returns), and shared parameter schemas (`scope`, `projectPath`, `env`, `teamId`, `orgId`) plus per-tool Zod `.describe()` strings now include formats, defaults, and concrete examples to lift the per-tool minimum score that dominates the server-level grade",
+      },
+      {
+        type: "changed",
+        text: "Project rules updated for the moved-out marketing site — `feature-docs-sync.mdc` drops stale `web/components/...` globs (the site was extracted in 0.11.5) and replaces them with an explicit `quantum_ring` ↔ `qring.i4c.studio` cross-repo file map; `release-process.mdc`'s downstream-sync table now lists the marketing site, Cursor / Kiro / Claude Code plugins, and Glama with explicit commands",
+      },
+      {
+        type: "changed",
+        text: "Documentation-only release — no runtime, MCP wire-format, or CLI behavior changes; existing agents and integrations will simply see longer, clearer tool descriptions on the next `tools/list` refresh",
+      },
+    ],
+  },
+  {
+    version: "0.11.5",
+    date: "2026-04-27",
+    highlights: [
+      {
+        type: "added",
+        text: "Kiro Power pack (`kiro-plugin/`) — steering files, hook templates, and `mcp.json` for Kiro; `pnpm run plugin:sync:kiro` copies into `~/.kiro` or a project `.kiro` path",
+      },
+      {
+        type: "added",
+        text: "Claude Code plugin (`claude-code-plugin/`) — `CLAUDE.md`, project `.mcp.json`, agents, slash commands, skills, and hooks; `pnpm run plugin:sync:claude` for project install or `--user` for `~/.claude`",
+      },
+      {
+        type: "changed",
+        text: "Marketing site extracted to its own repo — the embedded Next.js app under `web/` was removed from the main `quantum_ring` repository and now lives at https://github.com/I4cTime/qring.i4c.studio (deployed at https://qring.i4c.studio); the GitHub Pages workflows (`deploy-pages.yml`, `nextjs.yml`) and the `web:extract-repo` script were removed",
+      },
+      {
+        type: "changed",
+        text: "README — new “Editor plugins” section for Cursor, Kiro, and Claude Code, including sync commands and contributor notes; `package.json` `homepage` now points at https://qring.i4c.studio; Cursor plugin / marketplace metadata logo URL repointed at repo-root `assets/logo.png` on GitHub raw (replacing deleted `web/public/` paths)",
+      },
+      {
+        type: "changed",
+        text: "MCP tool descriptions — clearer operator guidance for `detect_anomalies`, `health_check`, `remove_hook`, `set_secret`, `delete_secret`, `entangle_secrets`, `disentangle_secrets`, and `agent_scan` (read-only versus mutating behavior and related tools)",
+      },
+      {
+        type: "changed",
+        text: "`.gitignore` ignores `marketing/` and `local/` for local-only drafts",
+      },
     ],
   },
   {
