@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 import path from "path";
 
 const nextConfig: NextConfig = {
-  output: "export",
+  // No `output: "export"` — Vercel's Next builder needs `.next`; export-only `out/` breaks deploy.
   basePath: "",
   images: { unoptimized: true },
   turbopack: {
