@@ -54,7 +54,7 @@
   "description": "q-ring marketing site — Next.js static export (deployed on Vercel).",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/I4cTime/qring-site.git"
+    "url": "git+https://github.com/I4cTime/qring.i4c.studio.git"
   },
   "homepage": "https://qring.i4c.studio"
 }
