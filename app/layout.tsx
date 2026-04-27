@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { JetBrains_Mono, Outfit } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
@@ -54,10 +55,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const isDev = process.env.NODE_ENV !== "production";
+  const vercelScriptHosts = "https://va.vercel-scripts.com";
   const scriptSrc = isDev
-    ? "'self' 'unsafe-inline' 'unsafe-eval'"
-    : "'self' 'unsafe-inline'";
-  const connectSrc = isDev ? "'self' ws: http: https:" : "'self'";
+    ? `'self' 'unsafe-inline' 'unsafe-eval' ${vercelScriptHosts}`
+    : `'self' 'unsafe-inline' ${vercelScriptHosts}`;
+  const connectSrc = isDev
+    ? "'self' ws: http: https:"
+    : "'self' https://vitals.vercel-insights.com";
   const csp = [
     "default-src 'self'",
     `script-src ${scriptSrc}`,
@@ -80,6 +84,7 @@ export default function RootLayout({
           Skip to content
         </a>
         <Providers>{children}</Providers>
+        <Analytics />
       </body>
     </html>
   );
